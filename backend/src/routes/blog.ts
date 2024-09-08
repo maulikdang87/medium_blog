@@ -18,9 +18,8 @@ export const blogRouter = new Hono <{
     blogRouter.use("/*",async (c,next)=>{
         const authHeader = c.req.header('authorization') || "";
 
-
         try{
-        
+
         const user = await verify(authHeader, c.env.JWT_SECRET);
         if(user){
             c.set("userId", user.id);
@@ -61,11 +60,7 @@ export const blogRouter = new Hono <{
             datasourceUrl: c.env.DATABASE_URL,
         }).$extends(withAccelerate())
 
-        
-
         const authorId = c.get("userId");
-
-
 
         const post = await prisma.posts.create({
             data : {
@@ -75,7 +70,7 @@ export const blogRouter = new Hono <{
             }
 
         })
-    
+
         return c.json({
             id : post.id
         })
@@ -119,43 +114,110 @@ export const blogRouter = new Hono <{
         
     })
 
+    blogRouter.get('/bulk', async (c) => {
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env.DATABASE_URL,
+        }).$extends(withAccelerate())
+    
+        const posts = await prisma.posts.findMany({
+            select :{
+                title : true,
+                content : true ,
+                published : true ,
+                id :true,
+                author :{
+                    select : {
+                        name : true,
+                    }
+                }
+            }
+        })
+        return c.json({
+            posts : posts
+        })
+    })
+
     blogRouter.get('/',async (c) => {
         const prisma = new PrismaClient({
             datasourceUrl: c.env.DATABASE_URL,
         }).$extends(withAccelerate())
 
-        const body = await c.req.json();
+        const id = c.req.header('id') || ""
 
         try {
 
-            const post = await prisma.posts.findFirst({
+            const post = await prisma.posts.findUnique({
                 where : {
-                    id : body.id
+                    id : id
+                },
+                select : {
+                    title : true,
+                    content : true ,
+                    authorId : true,
+                    author : {
+                        select : {
+                            name : true
+                        }
+                    }
                 }
             })
+
+           
 
             return c.json ({
                 post : post
             })
 
         }
+        
 
         catch(e){
             c.status(411);
+            
             return c.json({
-                message : "error while fetching post"
+                message : "error while fetching post",
+                error : e
             })
         }
 
     })
 
-    blogRouter.get('/bulk', async (c) => {
+    blogRouter.delete('/delete',async (c) => {
         const prisma = new PrismaClient({
             datasourceUrl: c.env.DATABASE_URL,
         }).$extends(withAccelerate())
 
-        const posts = await prisma.posts.findMany()
-        return c.json({
-            posts : posts
-        })
+        const id = c.req.header('id') || ""
+
+        try {
+
+            const post = await prisma.posts.delete({
+                where : {
+                    id : id
+                }
+            })
+
+            return c.json ({
+                msg : "successfully deleted"
+            })
+
+        }
+        
+
+        catch(e){
+            c.status(411);
+            
+            return c.json({
+                message : "error while fetching post",
+                error : e
+            })
+        }
+
     })
+
+    
+
+    
+
+   
+    
