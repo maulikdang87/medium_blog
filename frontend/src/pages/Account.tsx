@@ -1,4 +1,3 @@
-import React from 'react'
 import { UseData } from '../hooks';
 import { Spinner } from '../components/UserLogo';
 import Appbar from '../components/Appbar';
@@ -129,36 +128,3 @@ const Account = () => {
     )}}
 
 export default Account;
-
-{/* 
-    // <div className='flex  justify-center bg-slate-300 h-screen w-screen'>
-    //         <div className='flex flex-col justify-center'>
-    //             <div className='bg-white rounded-md px-8 py-5 min-w-80'>
-
-    //                 <div className='flex justify-center pb-3'>
-    //                     <div className="flex text-sm bg-gray-800 rounded-full ">
-    //                     <div className="font-small text-gray-600  text-base inline-flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">{data?.name[0].toUpperCase()}</div>
-    //                     </div>
-    //                 </div>
-
-    //                 <div className='text-center font-bold text-xl pb-3'>
-    //                     Account Details     
-    //                 </div>
-
-    //                 <div>
-
-    //                     <div>
-    //                         Username : {data?.name}
-    //                     </div>
-
-    //                     <div>
-    //                         Email : {data?.email}
-    //                     </div>
-
-    //                     <div>
-    //                         Bio : You can set your own bio
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div> */}
