@@ -1,6 +1,6 @@
 
 
-import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route,Routes } from 'react-router-dom'
 import './App.css'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'

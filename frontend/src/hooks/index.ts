@@ -15,6 +15,7 @@ export interface Blog {
 export interface Data {
   "name" : string ;
   "email" : string ;
+  "bio"? : string
 
 }
 

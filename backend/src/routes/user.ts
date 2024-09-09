@@ -2,7 +2,8 @@ import { Hono } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { sign, verify } from 'hono/jwt'
-import { signinInput, signupInput } from '@maulikdang/medium-common'
+import { signinInput, signupInput} from '@maulikdang/medium-common'
+import { use } from 'hono/jsx'
 
 
 export const userRouter = new Hono <{
@@ -145,7 +146,8 @@ userRouter.get('/name', async(c)=>{
                 },
                 select : {
                     name : true,
-                    email : true
+                    email : true,
+                    bio : true
                 }
             })  
 
@@ -161,5 +163,39 @@ userRouter.get('/name', async(c)=>{
                 msg : "You are not logged in"
             })
         }
+})
+
+userRouter.put('/edit', async (c) => {
+
+    const authHeader  = String(c.req.header("authorization"));
+
+    const user = await verify(authHeader, c.env.JWT_SECRET);
+    c.set("userId", user.id);
+
+    const  body = await c.req.json();
+   
+    
+    
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
+
+
+    const updatedUser = await prisma.user.update({
+        where: {
+            id : c.get("userId")
+        },
+        data : {
+            name : body.name,
+            email : body.email,
+            bio : body.bio
+        }
+    })
+
+    return c.json({
+        msg : "post updated",
+        id :  updatedUser
+    })
+    
 })
 

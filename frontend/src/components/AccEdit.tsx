@@ -1,10 +1,24 @@
-import React from 'react'
+
+import { useState } from 'react'
 import Appbar from './Appbar'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { BACKEND_URL } from '../config'
+import { UseData } from '../hooks'
+
 
 const AccEdit = () => {
+
+    const {loading , data } = UseData()
+
+    const [name , setName] = useState("");
+    const [email , setEmail] = useState("");
+    const [bio , setBio] = useState("");
+    
     const navigate = useNavigate()
   return (
+
+    
     <div>
         <Appbar/>
 
@@ -18,15 +32,18 @@ const AccEdit = () => {
   </div>
   <div className="flex flex-col gap-4 border-b py-4 sm:flex-row">
     <p className="shrink-0 w-32 font-medium">Name</p>
-    <input placeholder="Name" className="mb-2 w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 sm:mr-4 sm:mb-0 focus:ring-1" />
+    <input placeholder={data?.name} className="mb-2 w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 sm:mr-4 sm:mb-0 focus:ring-1" onChange={(e)=>{
+                    setName(e.target.value)}}/>
   </div>
   <div className="flex flex-col gap-4 border-b py-4 sm:flex-row">
     <p className="shrink-0 w-32 font-medium">Email</p>
-    <input placeholder="your.email@domain.com" className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1" />
+    <input placeholder={data?.email} className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"  onChange={(e)=>{
+                    setEmail(e.target.value)}} />
   </div>
   <div className="flex flex-col gap-4 border-b py-4 sm:flex-row">
     <p className="shrink-0 w-32 font-medium">Bio</p>
-    <input placeholder="Bio" className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1" />
+    <input placeholder={data?.bio} className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1" onChange={(e)=>{
+                    setBio(e.target.value)}} />
   </div>
 
   <div className=" py-4 ">
@@ -34,7 +51,25 @@ const AccEdit = () => {
         navigate("/account");
     }
     } className="mr-2 rounded-lg border-2 px-4 py-2 font-medium text-gray-500 focus:outline-none">Cancel</button>
-    <button className="rounded-lg border-2 border-transparent bg-green-600 px-4 py-2 font-medium text-white focus:outline-none  hover:bg-green-700">Save</button>
+    <button className="rounded-lg border-2 border-transparent bg-green-600 px-4 py-2 font-medium text-white focus:outline-none  hover:bg-green-700" onClick= {()=> {
+        axios.put(`${BACKEND_URL}/api/v1/user/edit`, {
+            name: name,
+            email: email,
+            bio: bio,
+            
+        }, {
+            headers : {
+                authorization : localStorage.getItem("token")
+            }
+        })
+        .then((response) => {
+            console.log(response);
+            navigate("/account");
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+        });
+    } }>Save</button>
 </div>
   
   

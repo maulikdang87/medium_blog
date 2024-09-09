@@ -1,4 +1,4 @@
-import z from 'zod';
+import z, { TypeOf } from 'zod';
 
 
 export const signupInput = z.object({
@@ -11,6 +11,12 @@ export const signinInput = z.object({
     username : z.string().email(),
     password :  z.string().min(6),
     
+})
+
+export const editInput = z.object({
+    username : z.string().email().optional(),
+    name : z.string().optional(),
+    bio : z.string().optional()
 })
 
 export const createBlog = z.object({
@@ -27,7 +33,7 @@ export const updateBlog = z.object({
 
 
 
-
+export type EditInput = z.infer<typeof editInput>
 export type SigninInput = z.infer<typeof signinInput>
 export type SignupInput = z.infer<typeof signupInput>
 export type CreateBlog = z.infer<typeof createBlog>
