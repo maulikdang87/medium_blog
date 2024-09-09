@@ -1,6 +1,3 @@
-import React from 'react'
-import { Dot } from './BlogCard'
-
 
 export const BlogSkeleton = () => {
     return <div role="status" className="animate-pulse">

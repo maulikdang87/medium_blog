@@ -1,6 +1,5 @@
-import React from 'react'
 import Appbar from './Appbar'
-import { Avatar } from './BlogCard'
+
 
 
 export const BlogDispSkel = () => {

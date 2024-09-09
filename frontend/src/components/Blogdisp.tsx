@@ -5,7 +5,7 @@ import Appbar from "./Appbar";
 
 
 
-export  const Blogdisp = ({blog} : { blog : Blog }) =>{
+export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
     return <div>
                 <Appbar/>
 
@@ -18,7 +18,7 @@ export  const Blogdisp = ({blog} : { blog : Blog }) =>{
                         <div className="col-span-7">
                             <div className="grid grid-cols-10 ">
                                 <div className="text-5xl font-extrabold pb-5 pr-4 col-span-7 ">
-                                {blog.title}
+                                {blog?.title}
                                 </div>
                             </div>
 
@@ -27,7 +27,7 @@ export  const Blogdisp = ({blog} : { blog : Blog }) =>{
                             </div>
 
                             <div>
-                                {blog.content}
+                                {blog?.content}
                             </div>   
                         </div>
                         <div className="col-span-2">
@@ -42,11 +42,11 @@ export  const Blogdisp = ({blog} : { blog : Blog }) =>{
                             </div>
                             <div className="flex">
                                 <div className="flex flex-col justify-center pr-3">
-                                    <Avatar label = {blog.author.name || "Anonymous"}></Avatar>
+                                    <Avatar label = {blog?.author.name || "Anonymous"}></Avatar>
                                 </div>
                                 <div >
                                     <div className="font-bold pb-1 text-xl">
-                                    {blog.author.name || "Anonymous"}
+                                    {blog?.author.name || "Anonymous"}
                                     </div>
                                     <div className="text-gray-500">
                                         This will contain our authors bio

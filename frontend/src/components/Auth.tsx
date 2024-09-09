@@ -16,7 +16,6 @@ const Auth = ({type}: {type : "signup" | "signin"}) => {
         password : ""
     })
 
-
 async function sendRequest(){
     try {
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`,postInputs )
@@ -33,7 +32,7 @@ async function sendRequest(){
 
 
     }
-    
+
 }
   return (
     <div className="h-screen flex justify-center flex-row  ">

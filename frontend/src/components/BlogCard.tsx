@@ -25,7 +25,6 @@ const BlogCard= ({
                 <Avatar label={authorName}></Avatar>  
 
             </div>
-
             
             <div className='pl-2 font-light flex justify-center text-md flex-col'>
                 <div className='flex'>
@@ -43,11 +42,8 @@ const BlogCard= ({
 
                     </div>
 
-
                 </div>
-                
-                
-                
+                  
             </div>
             
         </div>
@@ -72,7 +68,7 @@ export function Avatar( { label } : { label : string  }){
     return (
         <div className="relative text-base inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-200 rounded-full ">
         <span className="font-small text-gray-600 ">{label[0].toUpperCase()}</span>
-    </div>
+        </div>
 
     )
     
