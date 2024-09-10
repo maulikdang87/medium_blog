@@ -11,6 +11,7 @@ import Account from './pages/Account'
 import AccEdit from './components/AccEdit'
 
 
+
 function App() {
 
   const isLoggedIn : boolean = localStorage.getItem('token') !== null;
@@ -28,8 +29,8 @@ function App() {
           <Route path='/blogs' element = {<Blogs/>}></Route>
           <Route path = '/publish' element = {<Publish/>}></Route>
           <Route path='/account' element = {<Account/>}></Route>
-          <Route path='/change' element = {<AccEdit/>}></Route>
-
+          <Route path='/change' element = {<AccEdit/>}></Route> 
+          
         </Routes>
       </BrowserRouter>
     </>

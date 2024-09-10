@@ -3,6 +3,9 @@ import Appbar from '../components/Appbar'
 import { BACKEND_URL } from '../config'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import UserBlog from './UserBlog'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'
 
 const Publish = () => {
 
@@ -21,11 +24,11 @@ const Publish = () => {
           setTitle(e.target.value)
         }}/>
 
-        <TextEditor onChange={(e)=> {
-          setContent(e.target.value)
-        }} />
+        <div className='py-3 rounded-lg '>
+          <ReactQuill theme='snow' value={content} onChange={setContent}/>
 
-
+        </div>
+        
         <button className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg  focus:bg-green-800 " onClick={ async()=> {
           const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
             title : title,
@@ -54,19 +57,6 @@ const Publish = () => {
   )
 }
 
-function TextEditor({ onChange }: {onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void}) {
-  return <div className="mt-2">
-      <div className="w-full mb-4 ">
-          <div className="flex items-center justify-between border">
-          <div className="my-2 bg-white rounded-b-lg w-full">
-              <label className="sr-only">Publish post</label>
-              <textarea onChange={onChange} id="editor" rows={8} className="focus:outline-none block w-full px-0 text-sm text-gray-800 bg-white border-0 pl-2" placeholder="Write an article..." required />
-          </div>
-      </div>
-     </div>
 
-    
-  </div>
-}
 
 export default Publish

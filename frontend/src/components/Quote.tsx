@@ -14,8 +14,7 @@ const Quote = () => {
           </div>
           <div className="text-gray-500 text-xl font-thin">
             CEO, MadMax Inc
-            
-
+  
           </div>
 
         </div>

@@ -59,7 +59,7 @@ const Appbar = ({type} : {type? : string}) => {
         <div className="flex justify-end mr-4 ">
         {isOpen && (<UserLogo name={String(data?.name)} email={String(data?.email)} />)}
         </div>
-        
+
     </div>
 
 

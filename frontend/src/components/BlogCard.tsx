@@ -14,7 +14,7 @@ const BlogCard= ({
     publishedDate,
     id
 }: BlogCardProps) => {
-    
+    const data = content.slice(0,100) + "...";
   return (
     
     <div className='border-b-2 p-2 border-slate-200 text-base '>
@@ -53,7 +53,7 @@ const BlogCard= ({
             {title[0].toUpperCase()+ title.slice(1)} 
         </div>
         <div className='text-md font-thin'>
-            {content.slice(0,100) + "..."}
+           <div dangerouslySetInnerHTML={{ __html : data }}></div>
         </div>
         <div className='text-slate-500 font-thin text-sm pt-3'>
             {`${Math.ceil(content.length / 100)} minute(s) read`}

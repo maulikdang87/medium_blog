@@ -1,4 +1,3 @@
-import React from "react"
 import { Avatar } from "./BlogCard"
 import { Blog } from "../hooks";
 import Appbar from "./Appbar";
@@ -6,6 +5,7 @@ import Appbar from "./Appbar";
 
 
 export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
+    const content = String(blog?.content)
     return <div>
                 <Appbar/>
 
@@ -26,8 +26,8 @@ export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
                                 Posted on DD Month ,YYYY
                             </div>
 
-                            <div>
-                                {blog?.content}
+                            <div dangerouslySetInnerHTML={{ __html : content }} className="">
+                             
                             </div>   
                         </div>
                         <div className="col-span-2">

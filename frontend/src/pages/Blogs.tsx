@@ -17,6 +17,7 @@ const Blogs = () => {
                 <BlogSkeleton/>
                 <BlogSkeleton/>
                 <BlogSkeleton/>
+                
             </div>
             </div>
             </div>
