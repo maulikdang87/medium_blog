@@ -89,8 +89,7 @@ const EditBlog = () => {
           </div>
 
           <div>
-            {title}
-            {content}
+            
           </div>
     
          
