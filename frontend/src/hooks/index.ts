@@ -18,6 +18,18 @@ export interface Data {
 
 }
 
+export interface Posts {
+
+    "id": string,
+    "title": string,
+    "content": string,
+    "published": false,
+    "authorId": string
+
+  
+
+}
+
 
 export const useBlog = ({id}  : { id : string}) =>{
   const [loading , setLoading] = useState(true);
@@ -93,3 +105,27 @@ export const UseData = ()=>{
 
   return {loading , data }
 }
+
+export const UsePosts = ()=>{
+
+  const [loading,setLoading] = useState(true);
+  const [posts , setPosts] = useState<Posts[]>([]);
+
+
+  useEffect(()=>{
+    axios.get(`${BACKEND_URL}/api/v1/user/data`, {
+      headers : {
+          Authorization : localStorage.getItem("token"),
+      }
+  }).then ((response)=>{
+
+    setLoading(false);
+    setPosts(response.data.account.posts);
+    console.log(posts)
+  }
+  )
+  },[])
+
+  return {loading , posts} 
+}
+

@@ -44,7 +44,7 @@ const UserLogo = ({name , email } : { name : string , email : string}) => {
                 <div className="py-2">
                 <div className="flex block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
                     <button onClick={()=>{
-                        navigate("/account")
+                        navigate("/myposts")
                     }} className='flex-1 text-left'>
                         My Blogs
                     </button>

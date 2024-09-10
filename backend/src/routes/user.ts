@@ -108,8 +108,7 @@ userRouter.get('/data', async(c)=>{
                     id: String(user.id)
                 },
                 select : {
-                    name : true,
-                    email : true,
+                    
                     posts : true,
                 }
             })  
