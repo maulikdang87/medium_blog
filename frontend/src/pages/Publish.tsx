@@ -1,14 +1,13 @@
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import Appbar from '../components/Appbar'
 import { BACKEND_URL } from '../config'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import UserBlog from './UserBlog'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 
 const Publish = () => {
-
+  
   const [title , setTitle] = useState("")
   const [content , setContent] = useState("")
 

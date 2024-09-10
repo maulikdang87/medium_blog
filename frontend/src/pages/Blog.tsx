@@ -10,9 +10,7 @@ const Blog = () => {
         id : id || ""
     })
 
-    console.log(id)
-    
-   if (loading) {
+       if (loading) {
     return <div>
         <BlogDispSkel/>      
     </div>

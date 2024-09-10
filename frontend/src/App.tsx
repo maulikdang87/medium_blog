@@ -10,6 +10,7 @@ import Publish from './pages/Publish'
 import Account from './pages/Account'
 import AccEdit from './components/AccEdit'
 import UserBlogs from './pages/UserBlogs'
+import EditBlog from './pages/EditBlog'
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/account' element = {<Account/>}></Route>
           <Route path='/change' element = {<AccEdit/>}></Route> 
           <Route path='/myposts' element = {<UserBlogs/>}></Route>
+          <Route path='/editpost/:id' element = {<EditBlog/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

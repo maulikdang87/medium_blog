@@ -121,7 +121,7 @@ export const UsePosts = ()=>{
 
     setLoading(false);
     setPosts(response.data.account.posts);
-    console.log(posts)
+    
   }
   )
   },[])
