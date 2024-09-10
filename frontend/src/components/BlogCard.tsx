@@ -17,7 +17,7 @@ const BlogCard= ({
     const data = content.slice(0,100) + "...";
   return (
     
-    <div className='border-b-2 p-2 border-slate-200 text-base '>
+    <div className=' p-2  text-base '>
         <Link to ={`/blog/${id}`}>
         
         <div className='flex'>
