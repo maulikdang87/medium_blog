@@ -4,9 +4,10 @@ import { UseData } from '../hooks';
 
 
 
-const UserLogo = ({name , email } : { name : string , email : string}) => {
+const UserLogo = () => {
 
     const {loading , data } = UseData();
+    const name = data?.name || ""
 
     const navigate = useNavigate();
     // State to manage the visibility of the dropdown menue);
@@ -23,7 +24,7 @@ const UserLogo = ({name , email } : { name : string , email : string}) => {
                     </div> :
                 <div>
                     <div>{name[0].toUpperCase() + name.slice(1)}</div>
-                <div className="font-medium truncate">{email}</div>
+                <div className="font-medium truncate">{data?.email}</div>
                     </div>  
                    }
                 

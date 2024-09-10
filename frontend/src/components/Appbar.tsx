@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
-import UserLogo from './UserLogo'
+import UserLogo, { Spinner } from './UserLogo'
 import { useState } from "react";
 import { UseData } from "../hooks";
 
 const Appbar = ({type} : {type? : string}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(prevState => !prevState);
-    const {loading , data} = UseData();
-    console.log(data)
+    const {loading , data} = UseData()
+ 
+  
 
     return (
     <div>
@@ -45,7 +46,8 @@ const Appbar = ({type} : {type? : string}) => {
                             className="flex text-sm bg-gray-800 rounded-full md:me-0 "
                             type="button"
                         >
-                            <div className="font-small text-gray-600  relative text-base inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-200 rounded-full"> {data?.name[0].toUpperCase()}</div>
+                            {loading ? <div className="font-small text-gray-600  relative text-base inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-200 rounded-full"><Spinner/></div> : <div className="font-small text-gray-600  relative text-base inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-200 rounded-full"> {data?.name[0].toUpperCase()}</div>}
+                            
                         </button>
 
                     </div>
@@ -57,7 +59,7 @@ const Appbar = ({type} : {type? : string}) => {
         </div>
 
         <div className="flex justify-end mr-4 ">
-        {isOpen && (<UserLogo name={String(data?.name)} email={String(data?.email)} />)}
+        {isOpen && (<UserLogo />)}
         </div>
 
     </div>

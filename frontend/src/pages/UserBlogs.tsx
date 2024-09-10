@@ -5,7 +5,7 @@ import { BlogSkeleton } from "../components/BlogSkeleton"
 import { UsePosts } from "../hooks"
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
 
 
 const UserBlogs = () => {
