@@ -8,16 +8,17 @@ export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
     const content = String(blog?.content)
     return <div>
                 <Appbar/>
+            
+            <div className="flex flex-col pl-2 pt-5 md:flex-row md:pl-5 md:pt-10">
+                    <div className="flex-1 grid grid-cols-12  ">
 
-            <div className=" pl-5 pt-10   grid grid-cols-12 ">
-
-                    <div className = "col-span-8 grid grid-cols-10">
+                    <div className = "col-span-12 md:col-span-8 grid grid-cols-10 ">
                         <div className="col-span-1">
                             
                         </div>
                         <div className="col-span-7">
                             <div className="grid grid-cols-10 ">
-                                <div className="text-5xl font-extrabold pb-5 pr-4 col-span-7 ">
+                                <div className="text-5xl font-extrabold pb-5 pr-4 col-span-10 md:col-span-7 ">
                                 {blog?.title}
                                 </div>
                             </div>
@@ -36,7 +37,7 @@ export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
                         
                     </div>
 
-                    <div className="col-span-4">
+                    <div className="hidden md:block col-span-4">
                             <div className="font-semibold pb-2">
                                 Author
                             </div>
@@ -54,7 +55,9 @@ export  const Blogdisp = ({blog} : { blog? : Blog }) =>{
                                 </div>   
                             </div>   
                     </div>
-                </div>    
+                </div>   
+            </div>
+ 
     </div>
     
 

@@ -8,10 +8,10 @@ const Signup = () => {
   return (
     <div className='grid grid-cols-2'>
 
-      <div>
+      <div className='col-span-2 lg:col-span-1'>
         <Auth type= "signup"></Auth>
       </div>
-      <div className='invisible lg:visible'>
+      <div className='hidden lg:block lg:col-span-1'>
       <Quote/>
 
       </div>

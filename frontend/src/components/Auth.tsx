@@ -37,7 +37,7 @@ async function sendRequest(){
   return (
     <div className="h-screen flex justify-center flex-row  ">
 
-        <div className=" flex justify-center flex-col w-1/2">
+        <div className=" flex justify-center flex-col w-3/5 lg:w-1/2 ">
 
             <div className="text-4xl font-bold text-center">
                 Create Account
