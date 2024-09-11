@@ -48,7 +48,7 @@ async function sendRequest(){
                     Already have an account?
                 </div>
                 <div className="underline pl-1 hover:text-black">
-                            <Link to = {type === "signin"?"/signup" : "/signin"} >{type === "signin" ? "Signup" : "Signin" } </Link>
+                            <Link to = {type === "signin" ? "/signup" : "/signin"} >{type === "signin" ? "Signup" : "Signin" } </Link>
                 </div>
             </div>
 
@@ -81,7 +81,7 @@ async function sendRequest(){
         
             </div>
 
-            <button onClick = {sendRequest} type="button" className="w-full text-white bg-red-5000 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mt-2">{type === "signin" ? "Signin" : "Signup" } </button>
+            <button onClick = {sendRequest} type="button" className="w-full text-white bg-red-5000 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 :bg-gray-800 bg-gray-700 ring-gray-700 border-gray-700 mt-2">{type === "signin" ? "Signin" : "Signup" } </button>
         </div>
         
         
