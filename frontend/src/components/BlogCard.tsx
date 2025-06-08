@@ -29,7 +29,7 @@ const BlogCard= ({
             <div className='pl-2 font-light flex justify-center text-md flex-col'>
                 <div className='flex'>
                     <div>
-                        {authorName[0].toUpperCase() + authorName.slice(1)}
+                        {authorName[0] + authorName.slice(1)}
 
                     </div>
 
@@ -50,7 +50,7 @@ const BlogCard= ({
         
         <div className="text-2xl font-semibold pt-3 cursor-pointer">
             
-            {title[0].toUpperCase()+ title.slice(1)} 
+            {title[0]+ title.slice(1)} 
         </div>
         <div className='text-md font-thin'>
            <div dangerouslySetInnerHTML={{ __html : data }}></div>
